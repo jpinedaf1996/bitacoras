@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://10.103.1.110/public/';
+    public $baseURL = 'http://localhost/bitacoras/public/';
 
     /**
      * --------------------------------------------------------------------------
