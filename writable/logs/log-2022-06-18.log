@@ -1,0 +1,28 @@
+CRITICAL - 2022-06-18 09:26:31 --> Invalid file: header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/View/View.php(429): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/template/layout.php(14): CodeIgniter\View\View->include()
+ 4 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/template/layout.php')
+ 5 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->render()
+ 7 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 8 APPPATH/Controllers/Usuarios.php(17): view()
+ 9 SYSTEMPATH/CodeIgniter.php(898): App\Controllers\Usuarios->home()
+10 SYSTEMPATH/CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+12 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-18 14:54:39 --> Invalid file: template/headerd.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/View/View.php(429): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/template/layout.php(15): CodeIgniter\View\View->include()
+ 4 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/template/layout.php')
+ 5 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->render()
+ 7 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render()
+ 8 APPPATH/Controllers/Registro.php(12): view()
+ 9 SYSTEMPATH/CodeIgniter.php(898): App\Controllers\Registro->registro()
+10 SYSTEMPATH/CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+12 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

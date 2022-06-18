@@ -72,7 +72,8 @@ class Filters extends BaseConfig
     public $filters = [
         "SessionAdmin" => [
 			"before" => [
-				"/home"
+				"/home",
+                "/registro"
 			]
 		]
     ];
