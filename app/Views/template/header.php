@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><?php echo session("name")?></a>
     <button
@@ -25,7 +25,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Historial</a>
+          <a class="nav-link " href="#">Historial</a>
         </li>
         
         <li class="nav-item">
