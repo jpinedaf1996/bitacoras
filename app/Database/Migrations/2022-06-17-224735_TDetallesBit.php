@@ -29,7 +29,7 @@ class TDetallesBit extends Migration
                 'constraint' => ['1', '2', '3'],
                 'default'    => '1',
             ],
-            'created_at' => [
+            'hora' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
@@ -40,8 +40,13 @@ class TDetallesBit extends Migration
             ],
             'alertado' => [
                 'type'       => 'ENUM',
-                'constraint' => ['1', '2'],
-                'default'    => '2',
+                'constraint' => ['0', '1'], //1= SI // 0= NO
+                'default'    => '0',
+            ],
+            'reportado' => [
+                'type'       => 'ENUM',
+                'constraint' => ['0', '1'], //1= SI // 0= NO
+                'default'    => '0',
             ],
             'razon' => [
                 'type'       => 'TEXT',

@@ -28,9 +28,10 @@ class TUsers extends Migration
                 'constraint' => '100',
             ],
             'type' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ]
+                'type'       => 'ENUM',
+                'constraint' => ['admin', 'user'], 
+                'null' => false
+            ],
             
         ]);
         $this->forge->addKey('user_id', true);

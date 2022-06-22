@@ -42,6 +42,7 @@ $routes->post('/login', 'Usuarios::login');
 $routes->get('/exit', 'Usuarios::exit');
 
 $routes->get('/registro', 'Registro::registro');
+$routes->get('/registro/add', 'Registro::add');//asegurar rutas
 
 /*
  * --------------------------------------------------------------------

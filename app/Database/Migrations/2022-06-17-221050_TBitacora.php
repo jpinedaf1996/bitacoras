@@ -20,7 +20,7 @@ class TBitacora extends Migration
                 'type'       => 'INT',
                 'constraint' => '5',
             ],
-            'created_at' => [
+            'fecha' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
@@ -28,6 +28,11 @@ class TBitacora extends Migration
                 'type'       => 'TEXT',
                 'constraint' => '100',
                 'null' => true
+            ],
+            'turno' => [
+                'type'       => 'varchar',
+                'constraint' => '100',
+                'null' => false
             ],
             'id_pais' => [
                 'type'       => 'INT',
