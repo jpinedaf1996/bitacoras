@@ -73,7 +73,9 @@ class Filters extends BaseConfig
         "SessionAdmin" => [
 			"before" => [
 				"/home",
-                "/registro"
+                "/registro",
+                "/registro/*",
+
 			]
 		]
     ];
