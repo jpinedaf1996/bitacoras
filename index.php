@@ -1,3 +1,3 @@
 <?php
-header("Location: http://localhost/bitacoras/public");
+header("Location: https://informesoc.intelector.net/public/");
 ?>
