@@ -1,3 +1,5 @@
-.env*
-writable
+.env
+/writable
 index.php
+nuevo.php
+*.php
