@@ -12,16 +12,16 @@ Registro
   <br>
   <div class="row">
     <div class="col-md-3">
-
+    <form action="<?php echo base_url("/registro/add")?>" method="POST" name="bitacora-form" id="bitacora-form">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Fecha</span>
-        <input type="date" class="form-control" aria-label="date" aria-describedby="basic-addon1">
+        <input name="fecha" id="fecha" type="date" class="form-control" aria-label="date" aria-describedby="basic-addon1">
       </div>     
     </div>
     <div class="col-md-3">
       <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Turno</span>
-          <select class="form-select" aria-label="Default select example">
+          <select name="turno" id="turno" class="form-select" aria-label="Default select example">
           <option selected>Seleccione el turno</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -32,7 +32,7 @@ Registro
     <div class="col-md-3">
     <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Pais</span>
-          <select class="form-select" aria-label="Default select example">
+          <select name="pais" id="pais" class="form-select" aria-label="Default select example">
           <option value="1">SV</option>
           <option value="2">NI</option>
           <option value="3">otro</option>
@@ -42,11 +42,11 @@ Registro
     <div class="col-md-3">
       
     <div class="input-group mb-3">
-    <button type="button" class="btn  btn-primary">Crear</button>
+    <input type="submit" class="btn  btn-primary" value="Crear"></button>
       </div>
     </div>
   </div>
-  
+  </form> 
 </div>
 <br>
 <br>
@@ -55,7 +55,7 @@ Registro
   <div class="row">
   
   <div class="col-md-4">
-  <form name="bitacora-form" id="bitacora-form">
+  <form name="detalle-form" id="detalle-form">
     <div class="mb-3">
       <input type="text" placeholder="Producto" class="form-control" id="producto" name="producto" >
     </div>
