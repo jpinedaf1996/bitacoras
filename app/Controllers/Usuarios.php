@@ -28,6 +28,7 @@ class Usuarios extends BaseController
             $data = [
                         "name" => $dataUSer[0]["name"],
                         "user" => $dataUSer[0]["user"],
+                        "userId" => $dataUSer[0]["user_id"],
                         "type" => $dataUSer[0]["type"]
                     ];
             $session = session();
