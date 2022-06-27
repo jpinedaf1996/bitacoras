@@ -31,6 +31,7 @@ class RecordController extends BaseController
         ];
         $model =  new \App\Models\RegistrarModel();
         $response = $model->validateData($data);
+        
         echo json_encode($response);
         
     }
@@ -38,8 +39,6 @@ class RecordController extends BaseController
     public function add()
     {
         
-        if(!isset($_COOKIE["estado"]) and $_COOKIE["estado"] != 'open'){
-            
             $date= $this->request->getPost("fecha");
             $schedule= $this->request->getPost("turno");
             $descripcion= "Comentarios pendientes de actulizar";
@@ -55,20 +54,8 @@ class RecordController extends BaseController
             
             $model =  new \App\Models\RegistrarModel();
             $response = $model->insertData($data);
-
-            if(!isset($response["error"])){
-                helper("cookie");
-                    set_cookie("id", $response["data"]["id"]);  
-                    set_cookie("estado", $response["data"]["estado"]); 
-            } 
-      
-        } else{
-
-            $response = ['data' => ['error' => 'Ya existe una bitacora abierta']];
-
-        }
         
-        echo json_encode($response);
+            echo json_encode($response);
         
 
     }

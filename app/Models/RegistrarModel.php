@@ -7,19 +7,29 @@ class RegistrarModel extends Model
 {
     
     public function insertData($data){
-       
-        $record= $this->db->table("t_bitacora");
+
+        $flag = $this->validateData($data["user_id"]);
+
+        if(  $flag == false  ){
+
+            $record= $this->db->table("t_bitacora");
             $record->insert($data);
 
             if($this->db->insertID() > 0 ){
 
-                $response= ['data' => ["id"=> $this->db->insertID(),"estado"=>"open"]];
-                
+                $response= ['data' => ["id"=> $this->db->insertID(),"estado" => "open"]];  
+
             }else{
+
                 $response= ["error" => "No se pudo registrar la bitacora error: 500"];
             }
+        }else{
+            
+            $response = $flag;
+        }
 
         return $response;
+
     }
     public function getDataById($id){
        
@@ -33,20 +43,20 @@ class RegistrarModel extends Model
     public function validateData($id){
        
         $flag= $this->db->table("t_bitacora");
-        $flag->select('estado,id_bitacora');
+        $flag->select('estado,id_bitacora,fecha');
         $flag->where(['estado' => "open"]);
         $flag->where(['user_id' => $id]);
         $flag->limit(1);
 
         $result =  $flag->get()->getResultArray();
 
-        if($result[0]['estado'] != 'open'){
+        if(count($result)>0){
 
-            $response = $result;
-
+            $response= ['data' => $result[0]];
+            
         }else{
 
-            $response= ['data' => ["id"=> $result[0]['id_bitacora'] ,'estado'=>$result[0]['estado'] ]];
+            $response = false;
         }
 
         return $response;
