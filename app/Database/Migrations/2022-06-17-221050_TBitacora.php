@@ -24,9 +24,9 @@ class TBitacora extends Migration
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
-            'description' => [
+            'descripcion' => [
                 'type'       => 'TEXT',
-                'constraint' => '100',
+                'constraint' => '200',
                 'null' => true
             ],
             'turno' => [
@@ -37,6 +37,11 @@ class TBitacora extends Migration
             'id_pais' => [
                 'type'       => 'INT',
                 'constraint' => '2',
+            ],
+            'estado' => [
+                'type'       => 'ENUM',
+                'constraint' => ['open', 'close'], //1= SI // 0= NO
+                'default'    => 'open',
             ]
             
         ]);

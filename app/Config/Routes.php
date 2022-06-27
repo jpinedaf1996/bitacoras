@@ -18,7 +18,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Usuarios');
-$routes->setDefaultController('Registro');
+$routes->setDefaultController('RecordController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -41,8 +41,10 @@ $routes->get('/home', 'Usuarios::home');
 $routes->post('/login', 'Usuarios::login');
 $routes->get('/exit', 'Usuarios::exit');
 
-$routes->get('/registro', 'Registro::registro');
-$routes->post('/registro/add', 'Registro::add');//asegurar rutas
+$routes->get('/registro', 'RecordController::registro');
+$routes->get('/registro/validar', 'RecordController::statusValidate');
+$routes->get('/registro/get/(:any)', 'RecordController::getRecordById/$1');
+$routes->post('/registro/add', 'RecordController::add');//asegurar rutas
 
 /*
  * --------------------------------------------------------------------

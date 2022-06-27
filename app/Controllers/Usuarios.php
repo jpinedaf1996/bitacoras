@@ -41,6 +41,7 @@ class Usuarios extends BaseController
     }
     public function exit()
     {
+    
         $session = session();
         $session->destroy();
         return redirect()->to(base_url("/"));
