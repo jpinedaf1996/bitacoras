@@ -15,16 +15,17 @@ Registro
     <form name="bitacora-form" id="bitacora-form">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Fecha</span>
-        <input required name="fecha" id="fecha" type="date" class="form-control " aria-label="date" aria-describedby="basic-addon1">
+        <input required name="fecha" id="fecha" type="date" value="<?php echo date('Y-m-d') ?>" class="form-control " aria-label="date" aria-describedby="basic-addon1">
       </div>     
     </div>
     <div class="col-md-3">
       <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Turno</span>
           <select required name="turno" id="turno" class="form-select disabled" aria-label="Default select example">
-          <option Selected value="Primer turno">Primer turno</option>
-          <option value="Segundo turno">Segundo turno</option>
-          <option value="Tercer turno">Tercer turno</option>
+          <option Selected value="1">Primer turno</option>
+          <option value="2">Segundo turno</option>
+          <option value="3">Tercer turno</option>
+          <option value="4">otro</option>
         </select>  
         </div>
     </div>
@@ -32,9 +33,6 @@ Registro
     <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Pais</span>
           <select required name="pais" id="pais" class="form-select" aria-label="Default select example">
-          <option value="1">SV</option>
-          <option value="2">NI</option>
-          <option value="3">otro</option>
         </select>  
         </div>
     </div>
@@ -63,13 +61,22 @@ Registro
       <input type="text" class="form-control" placeholder="Tegnologia" name ="tegnologia" id="tegnologia">
     </div>
     <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Cliente</span>
+          <select name="cliente" id="cliente" class="form-select" aria-label="Default select example">
+          <option value="1">DIANA</option>
+          <option value="2">BCR</option>
+          <option value="3">Intelector</option>
+        </select>  
+    </div>
+
+    <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Criticidad</span>
-          <select name="criticidad" class="form-select" aria-label="Default select example">
+          <select name="criticidad"  class="form-select" aria-label="Default select example">
           <option value="1">Baja</option>
           <option value="2">Media</option>
           <option value="3">Alta</option>
         </select>  
-        </div>
+    </div>
     <div class="mb-3">
         <div class="input-group">
         <textarea placeholder="comentario" name="comentario" class="form-control" aria-label="With textarea"></textarea>
@@ -79,21 +86,22 @@ Registro
           <span class="input-group-text" id="basic-addon1">Restablecio</span>
           <select class="form-select" name="restablecio" aria-label="Default select example">
           <option value="1" selected>SI</option>
-          <option value="2">NO</option>
+          <option value="0">NO</option>
         </select>  
       </div>
     <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">Reportado</span>
           <select class="form-select" name="reportado" id="reportado" aria-label="Default select example">
-          <option value="1" selected>NO</option>
-          <option value="2">SI</option>
+          <option value="1">SI</option>
+          <option value="0" selected>NO</option>
+          
         </select>  
       </div>
     <div class="mb-3">
       <input type="text" class="form-control" placeholder="Razon" name="razon" id="razon">
     </div>
     
-    <button type="submit" class="btn btn-primary">Registrar</button>
+    <input type="submit" id="btn-detalle" class="btn btn-primary" value="Registrar"></input>
 </form>    
   </div>
     <div class="col-md-9 ">
@@ -112,7 +120,7 @@ Registro
           <th scope="col">Razon</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="detalle-table">
         <tr>
           <th scope="row">1</th>
           <td>ELA</td>

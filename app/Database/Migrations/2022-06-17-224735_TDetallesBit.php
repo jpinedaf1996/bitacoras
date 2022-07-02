@@ -20,6 +20,10 @@ class TDetallesBit extends Migration
                 'type'       => 'varchar',
                 'constraint' => '100',
             ],
+            'id_cliente' => [
+                'type'       => 'INT',
+                'constraint' => '5',
+            ],
             'tegnologia' => [
                 'type'       => 'varchar',
                 'constraint' => '100',
@@ -56,7 +60,7 @@ class TDetallesBit extends Migration
             'id_bitacora' => [
                 'type'       => 'INT',
                 'constraint' => '5',
-            ],
+            ]
             
             
         ]);

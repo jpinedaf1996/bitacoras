@@ -8,11 +8,29 @@ class RecordController extends BaseController
 {
     public function registro()
     {
-       // $this->load->helper('cookie');
-    //delete_cookie("id");
+        
 
         return view('registro');
     }
+
+    public function Countries()
+    {
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->getCountries();
+        echo json_encode(['data'=> $response]);
+        
+    }
+
+    public function getDetalle()
+    {
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->getDetalle();
+        echo json_encode(['data'=> $response]);
+        
+    }
+
 
     public function getRecordById($id)
     {
@@ -31,6 +49,35 @@ class RecordController extends BaseController
         ];
         $model =  new \App\Models\RegistrarModel();
         $response = $model->validateData($data);
+        
+        echo json_encode($response);
+        
+    }
+    public function addDetalle ()
+    {
+        $tegnologia = $this->request->getPost("tegnologia");
+        $producto = $this->request->getPost("producto");
+        $cliente = $this->request->getPost("cliente");
+        $criticidad = $this->request->getPost("criticidad");
+        $comentario = $this->request->getPost("comentario");
+        $restablecio = $this->request->getPost("restablecio");
+        $reportado = $this->request->getPost("reportado");
+        $razon = $this->request->getPost("razon");
+
+        $data = [
+            'tegnologia' => $this->request->getPost("tegnologia"),
+            'id_bitacora' => $this->request->getPost("id_bitacora"),
+            'producto' => $this->request->getPost("producto"),
+            'id_cliente' => $this->request->getPost("cliente"),
+            'criticidad' => $this->request->getPost("criticidad"),
+            'comentario' => $this->request->getPost("comentario"),
+            'alertado' => $this->request->getPost("restablecio"),
+            'reportado' => $this->request->getPost("reportado"),
+            'razon' => $this->request->getPost("razon"),
+        ];
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->saveDetalle($data);
         
         echo json_encode($response);
         

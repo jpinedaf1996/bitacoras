@@ -43,8 +43,11 @@ $routes->get('/exit', 'Usuarios::exit');
 
 $routes->get('/registro', 'RecordController::registro');
 $routes->get('/registro/validar', 'RecordController::statusValidate');
+$routes->get('/registro/getDetalle', 'RecordController::getDetalle');
+$routes->get('/registro/paises', 'RecordController::Countries');
 $routes->get('/registro/get/(:any)', 'RecordController::getRecordById/$1');
 $routes->post('/registro/add', 'RecordController::add');//asegurar rutas
+$routes->post('/registro/add-detalles', 'RecordController::addDetalle');
 
 /*
  * --------------------------------------------------------------------

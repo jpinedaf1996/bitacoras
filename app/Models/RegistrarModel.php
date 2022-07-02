@@ -40,17 +40,29 @@ class RegistrarModel extends Model
         return $record->get()->getResultArray();
         
     }
+    public function getCountries(){
+       
+        $record= $this->db->table("t_pais");
+        return $record->get()->getResultArray();
+        
+    }
+    public function getDetalle(){
+       
+        $record= $this->db->table("t_detalle_bit");
+        return $record->get()->getResultArray();
+        
+    }
     public function validateData($id){
        
         $flag= $this->db->table("t_bitacora");
-        $flag->select('estado,id_bitacora,fecha');
-        $flag->where(['estado' => "open"]);
-        $flag->where(['user_id' => $id]);
+        $flag->select('*');
+        $flag->join('t_pais', 't_bitacora.id_pais = t_pais.id_pais','inner');
+        $flag->where(['estado' => "open", 'user_id' => $id]);
         $flag->limit(1);
 
         $result =  $flag->get()->getResultArray();
 
-        if(count($result)>0){
+       if(count($result)>0){
 
             $response= ['data' => $result[0]];
             
@@ -61,6 +73,13 @@ class RegistrarModel extends Model
 
         return $response;
         
+    }
+    public function saveDetalle($data){
+       
+        $record= $this->db->table("t_detalle_bit");
+        $record->insert($data);
+        return $this->db->insertID();
+
     }
 
 }

@@ -22,7 +22,7 @@ class TBitacora extends Migration
             ],
             'fecha' => [
                 'type'    => 'TIMESTAMP',
-                'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'default' => date('Y-m-d H:i:s'),
             ],
             'descripcion' => [
                 'type'       => 'TEXT',
@@ -30,8 +30,8 @@ class TBitacora extends Migration
                 'null' => true
             ],
             'turno' => [
-                'type'       => 'varchar',
-                'constraint' => '100',
+                'type'       => 'INT',
+                'constraint' => '1',
                 'null' => false
             ],
             'id_pais' => [

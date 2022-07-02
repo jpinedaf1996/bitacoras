@@ -10,10 +10,10 @@ class Country extends Seeder
     {
 
         $data = [
-            'name' => 'SV - El Salvador'
+            'pais' => 'SV - El Salvador'
         ];
         $data2 = [
-            'name' => 'NI - Nicaragua'
+            'pais' => 'NI - Nicaragua'
         ];
 
         // Using Query Builder
