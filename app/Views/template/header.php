@@ -17,19 +17,19 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/home")?>">Dashboard</a>
+          <a class="nav-link active" href="<?php echo base_url("/home")?>">Dashboard</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?php echo base_url("/registro")?>">Registro</a>
+          <a class="nav-link active"  href="<?php echo base_url("/registro")?>">Registro</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link " href="#">Historial</a>
+          <a class="nav-link active" href="<?php echo base_url("/historial")?>">Historial</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/exit")?>">Salir</a>
+          <a class="nav-link" href="<?php echo base_url("/exit")?>">Cerrar sesion</a>
         </li>
         
       </ul>

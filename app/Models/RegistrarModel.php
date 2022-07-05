@@ -17,7 +17,7 @@ class RegistrarModel extends Model
 
             if($this->db->insertID() > 0 ){
 
-                $response= ['data' => ["id"=> $this->db->insertID(),"estado" => "open"]];  
+                $response= ['data' => ["id_bitacora"=> $this->db->insertID(),"estado" => "open"]];  
 
             }else{
 
@@ -46,9 +46,12 @@ class RegistrarModel extends Model
         return $record->get()->getResultArray();
         
     }
-    public function getDetalle(){
+    public function getDetalle($id){
        
         $record= $this->db->table("t_detalle_bit");
+        $record->select('*');
+        $record->join('t_clientes', 't_detalle_bit.id_cliente = t_clientes.id_cliente','inner');
+        $record->where(['estado'=> 1,'id_bitacora' => $id]);
         return $record->get()->getResultArray();
         
     }
@@ -79,6 +82,39 @@ class RegistrarModel extends Model
         $record= $this->db->table("t_detalle_bit");
         $record->insert($data);
         return $this->db->insertID();
+
+    }
+
+    public function getCustomers(){
+       
+        $record = $this->db->table("t_clientes");
+        return $record->get()->getResultArray();
+
+    }
+    public function deleteDetalle($id){
+       
+        $builder = $this->db->table("t_detalle_bit");
+        $builder->set('estado', '0');
+        $builder->where('id_detalle', $id);
+        if($builder->update()){
+            return ['status'=>'ok'];
+        }else{
+            return ['status'=>'error'];
+        }
+        
+
+    }
+    public function send($id){
+       
+        $builder = $this->db->table("t_bitacora");
+        $builder->set('estado', 'close');
+        $builder->where('id_bitacora', $id);
+        if($builder->update()){
+            return ['status'=>'ok'];
+        }else{
+            return ['status'=>'error'];
+        }
+        
 
     }
 

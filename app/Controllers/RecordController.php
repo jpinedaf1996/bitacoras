@@ -8,8 +8,6 @@ class RecordController extends BaseController
 {
     public function registro()
     {
-        
-
         return view('registro');
     }
 
@@ -21,12 +19,37 @@ class RecordController extends BaseController
         echo json_encode(['data'=> $response]);
         
     }
-
-    public function getDetalle()
+    public function deleteDetalle()
     {
         
         $model =  new \App\Models\RegistrarModel();
-        $response = $model->getDetalle();
+        $response = $model->deleteDetalle($this->request->getPost("id_detalle"));
+        echo json_encode(['data'=> $response]);
+        
+    }
+    public function send()
+    {
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->send($this->request->getPost("id_bitacora"));
+        echo json_encode(['data'=> $response]);
+        
+    }
+    public function getCustomers()
+    {
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->getCustomers();
+        echo json_encode(['data'=> $response]);
+        
+    }
+
+
+    public function getDetalle()
+    {
+        $id = $this->request->getPost("id_bitacora");
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->getDetalle($id);
         echo json_encode(['data'=> $response]);
         
     }
@@ -55,32 +78,35 @@ class RecordController extends BaseController
     }
     public function addDetalle ()
     {
-        $tegnologia = $this->request->getPost("tegnologia");
-        $producto = $this->request->getPost("producto");
-        $cliente = $this->request->getPost("cliente");
-        $criticidad = $this->request->getPost("criticidad");
-        $comentario = $this->request->getPost("comentario");
-        $restablecio = $this->request->getPost("restablecio");
-        $reportado = $this->request->getPost("reportado");
-        $razon = $this->request->getPost("razon");
+        $validation = service("validation");
+        $validation->setRules([
+            'tegnologia' => ['label' => 'tegnologia', 'rules' => 'required'],
+            'id_bitacora' => ['label' => 'id_bitacora', 'rules' => 'required'],
+            'comentario' => ['label' => 'comentario', 'rules' => 'required'],
+            'razon' => ['label' => 'razon', 'rules' => 'required'],
+            'producto' => ['label' => 'producto', 'rules' => 'required'],
+        ]);
 
-        $data = [
-            'tegnologia' => $this->request->getPost("tegnologia"),
-            'id_bitacora' => $this->request->getPost("id_bitacora"),
-            'producto' => $this->request->getPost("producto"),
-            'id_cliente' => $this->request->getPost("cliente"),
-            'criticidad' => $this->request->getPost("criticidad"),
-            'comentario' => $this->request->getPost("comentario"),
-            'alertado' => $this->request->getPost("restablecio"),
-            'reportado' => $this->request->getPost("reportado"),
-            'razon' => $this->request->getPost("razon"),
-        ];
-        
-        $model =  new \App\Models\RegistrarModel();
-        $response = $model->saveDetalle($data);
-        
-        echo json_encode($response);
-        
+        if(!$validation->withRequest($this->request)->run()){
+            echo json_encode(['errors'=>$validation->getErrors()]);
+        }else{
+            $data = [
+                'tegnologia' => $this->request->getPost("tegnologia"),
+                'id_bitacora' => $this->request->getPost("id_bitacora"),
+                'producto' => $this->request->getPost("producto"),
+                'id_cliente' => $this->request->getPost("cliente"),
+                'criticidad' =>  $this->request->getPost("criticidad"),
+                'comentario' => $this->request->getPost("comentario"),
+                'restablecio' => $this->request->getPost("restablecio"),
+                'reportado' => $this->request->getPost("reportado"),
+                'razon' => $this->request->getPost("razon"),
+            ];
+            
+            $model =  new \App\Models\RegistrarModel();
+            $response = $model->saveDetalle($data);
+            
+            echo json_encode($response);
+        }    
     }
 
     public function add()

@@ -19,6 +19,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Usuarios');
 $routes->setDefaultController('RecordController');
+$routes->setDefaultController('HistoryController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -43,12 +44,16 @@ $routes->get('/exit', 'Usuarios::exit');
 
 $routes->get('/registro', 'RecordController::registro');
 $routes->get('/registro/validar', 'RecordController::statusValidate');
-$routes->get('/registro/getDetalle', 'RecordController::getDetalle');
+$routes->post('/registro/getDetalle', 'RecordController::getDetalle');
 $routes->get('/registro/paises', 'RecordController::Countries');
+$routes->get('/registro/getCustomers', 'RecordController::getCustomers');
+$routes->post('/registro/deleteDetalle', 'RecordController::deleteDetalle');
+$routes->post('/registro/send', 'RecordController::send');
 $routes->get('/registro/get/(:any)', 'RecordController::getRecordById/$1');
 $routes->post('/registro/add', 'RecordController::add');//asegurar rutas
 $routes->post('/registro/add-detalles', 'RecordController::addDetalle');
 
+$routes->get('/historial', 'HistoryController::history');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

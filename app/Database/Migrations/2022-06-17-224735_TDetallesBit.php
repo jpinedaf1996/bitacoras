@@ -30,8 +30,8 @@ class TDetallesBit extends Migration
             ],
             'criticidad' => [
                 'type'       => 'ENUM',
-                'constraint' => ['1', '2', '3'],
-                'default'    => '1',
+                'constraint' => ['ALTA', 'MEDIA', 'BAJA'],
+                'default'    => 'BAJA',
             ],
             'hora' => [
                 'type'    => 'TIMESTAMP',
@@ -42,15 +42,15 @@ class TDetallesBit extends Migration
                 'constraint' => '100',
                 'null' => true
             ],
-            'alertado' => [
+            'restablecio' => [
                 'type'       => 'ENUM',
-                'constraint' => ['0', '1'], //1= SI // 0= NO
-                'default'    => '0',
+                'constraint' => ['SI', 'NO'], 
+                'default'    => 'NO',
             ],
             'reportado' => [
                 'type'       => 'ENUM',
-                'constraint' => ['0', '1'], //1= SI // 0= NO
-                'default'    => '0',
+                'constraint' => ['SI', 'NO'], 
+                'default'    => 'NO',
             ],
             'razon' => [
                 'type'       => 'TEXT',
@@ -60,8 +60,12 @@ class TDetallesBit extends Migration
             'id_bitacora' => [
                 'type'       => 'INT',
                 'constraint' => '5',
+            ],            
+            'estado' => [
+                'type'       => 'ENUM',
+                'constraint' => ['1', '0'], //1= activo // 0= borrado
+                'default'    => '1',
             ]
-            
             
         ]);
         $this->forge->addKey('id_detalle', true);

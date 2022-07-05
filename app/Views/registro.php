@@ -6,9 +6,8 @@ Registro
 
 
 <?= $this->section('content') ?>
-<br>
-<div class="container">
-  <h2>Registro de bitacora - Usuario: <?php echo session("name")?></h2>
+<div class="main-container">
+<h2>Registro de bitacora - Usuario: <?php echo session("name")?></h2>
   <br>
   <div class="row">
     <div class="col-md-3">
@@ -36,33 +35,32 @@ Registro
         </select>  
         </div>
     </div>
+    
     <div class="col-md-3">
       
     <div class="input-group mb-3">
-    <input type="submit" class="btn  btn-primary" id="btn-form-bit" value="Crear"></button>
+    <input type="submit" class="btn  btn-primary" id="btn-form-bit" value="Crear bitacora">
+    </form> 
+    <button style="margin-left:15px;" onClick="send()" class="btn btn-danger btn-sm"  >Finalizar bitacora </button>
       </div>
     </div>
   </div>
-  </form> 
-</div>
 <br>
-<br>
-
-<div id="content-detalle" class="container d-none">
+<div id="content-detalle" class="d-none">
   <div class="row">
   
   <div class="col-md-3">
   <form name="detalle-form" id="detalle-form">
     <div class="mb-3">
-      <input type="text" placeholder="Producto" class="form-control" id="producto" name="producto" >
+      <input required type="text" placeholder="Producto" class="form-control" id="producto" name="producto" >
     </div>
     <div class="mb-3">
       
-      <input type="text" class="form-control" placeholder="Tegnologia" name ="tegnologia" id="tegnologia">
+      <input required type="text" class="form-control" placeholder="Tegnologia" name ="tegnologia" id="tegnologia">
     </div>
     <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Cliente</span>
-          <select name="cliente" id="cliente" class="form-select" aria-label="Default select example">
+          <select required name="cliente" id="cliente" class="form-select" aria-label="Default select example">
           <option value="1">DIANA</option>
           <option value="2">BCR</option>
           <option value="3">Intelector</option>
@@ -72,44 +70,49 @@ Registro
     <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Criticidad</span>
           <select name="criticidad"  class="form-select" aria-label="Default select example">
-          <option value="1">Baja</option>
-          <option value="2">Media</option>
-          <option value="3">Alta</option>
+          <option value="BAJA">Baja</option>
+          <option value="MEDIA">Media</option>
+          <option value="ALTA">Alta</option>
         </select>  
     </div>
     <div class="mb-3">
         <div class="input-group">
-        <textarea placeholder="comentario" name="comentario" class="form-control" aria-label="With textarea"></textarea>
+        <textarea required placeholder="comentario" name="comentario" class="form-control" aria-label="With textarea"></textarea>
       </div>
     </div>
     <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Restablecio</span>
           <select class="form-select" name="restablecio" aria-label="Default select example">
-          <option value="1" selected>SI</option>
-          <option value="0">NO</option>
+          <option value="SI" >SI</option>
+          <option value="NO" selected>NO</option>
         </select>  
-      </div>
+    </div>
     <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">Reportado</span>
           <select class="form-select" name="reportado" id="reportado" aria-label="Default select example">
-          <option value="1">SI</option>
-          <option value="0" selected>NO</option>
+          <option value="SI">SI</option>
+          <option value="NO" selected>NO</option>
           
         </select>  
       </div>
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Razon" name="razon" id="razon">
-    </div>
+
+      <div class="mb-3">
+        <input required type="text" class="form-control" placeholder="Razon" name="razon" id="razon">
+      </div>
     
-    <input type="submit" id="btn-detalle" class="btn btn-primary" value="Registrar"></input>
-</form>    
+        <input type="submit" id="btn-detalle" class="btn btn-primary" value="Registrar">
+        <button class="btn btn-secondary" id="btn-limpiar" >Limpiar</button> 
+    </form> 
+    
+      
   </div>
     <div class="col-md-9 ">
       <div class="w-100 table-responsive" >
-    <table style="font-size: 12px; text-alight:center" class="table table-hover">
+    <table style="text-alight:center" class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Borrar</th>
+          <th scope="col">Hora</th>
           <th scope="col">Producto</th>
           <th scope="col">Tegnologia</th>
           <th scope="col">Cliente</th>
@@ -121,28 +124,7 @@ Registro
         </tr>
       </thead>
       <tbody id="detalle-table">
-        <tr>
-          <th scope="row">1</th>
-          <td>ELA</td>
-          <td>Manageingine</td>
-          <td>@DIANA</td>
-          <td>Alta</td>
-          <td>Lorem ipsum dolor m assumenda  harum?</td>
-          <td>SI</td>
-          <td>@NO</td>
-          <td>dolor sit amet, consectetur s est maiores</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-        </tr>
+        
         
       </tbody>
 </table>
@@ -151,5 +133,7 @@ Registro
   </div>
   
 </div>
-<script src="<?php echo base_url("/js/fecth.js")?>"></script>
+</div>
+  
+<script src="<?php echo base_url("/js/app.js")?>"></script>
 <?php $this->endSection() ?>
