@@ -30,7 +30,7 @@ class TBitacora extends Migration
                 'null' => true
             ],
             'turno' => [
-                'type'       => 'INT',
+                'type'       => 'varchar',
                 'constraint' => '1',
                 'null' => false
             ],

@@ -7,7 +7,7 @@ Registro
 
 <?= $this->section('content') ?>
 <div class="main-container">
-<h2>Registro de bitacora - Usuario: <?php echo session("name")?></h2>
+<h2>Registro de bitacora : <?php echo session("name")?></h2>
   <br>
   <div class="row">
     <div class="col-md-3">
@@ -21,10 +21,12 @@ Registro
       <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Turno</span>
           <select required name="turno" id="turno" class="form-select disabled" aria-label="Default select example">
-          <option Selected value="1">Primer turno</option>
-          <option value="2">Segundo turno</option>
-          <option value="3">Tercer turno</option>
-          <option value="4">otro</option>
+          <option  value="A">Turno A</option>
+          <option  value="B">Turno B</option>
+          <option  value="C">Turno C (Noche)</option>
+          <option  value="D">Turno D (Noche)</option>
+          <option  value="E">Turno E (Noche)</option>
+          <option  value="F">Turno F</option>
         </select>  
         </div>
     </div>
@@ -47,9 +49,11 @@ Registro
   </div>
 <br>
 <div id="content-detalle" class="d-none">
+<button id="ocultar-menu" onClick="toggleForm()" class="btn btn-sm btn-totggle btn-secondary ">Ocultar</button>
+
+<br><br>
   <div class="row">
-  
-  <div class="col-md-3">
+  <div id="content-form" class="col-md-3">
   <form name="detalle-form" id="detalle-form">
     <div class="mb-3">
       <input required type="text" placeholder="Producto" class="form-control" id="producto" name="producto" >
@@ -102,11 +106,9 @@ Registro
     
         <input type="submit" id="btn-detalle" class="btn btn-primary" value="Registrar">
         <button class="btn btn-secondary" id="btn-limpiar" >Limpiar</button> 
-    </form> 
-    
-      
+    </form>    
   </div>
-    <div class="col-md-9 ">
+    <div id="content-table" class="col-md-9 ">
       <div class="w-100 table-responsive" >
     <table style="text-alight:center" class="table table-hover">
       <thead>

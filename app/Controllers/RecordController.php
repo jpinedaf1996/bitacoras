@@ -54,16 +54,6 @@ class RecordController extends BaseController
         
     }
 
-
-    public function getRecordById($id)
-    {
-        
-        $model =  new \App\Models\RegistrarModel();
-        $response = $model->getDataById($id);
-        echo json_encode($response);
-        
-    }
-
     public function statusValidate()
     {
         

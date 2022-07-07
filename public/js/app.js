@@ -93,7 +93,7 @@ function getDetalle() {
 		.then(res => res.json())
 		.catch(error => console.error('Error:', error))
 		.then(response => {
-			//console.log(response);
+
 			let content = document.getElementById("detalle-table");
 			content.innerHTML = " ";
 			
@@ -243,4 +243,15 @@ function blockFormBit(params) {
 	turno.setAttribute("disabled", true);
 	pais.setAttribute("disabled", true);
 	btn.setAttribute("disabled", true);
+}
+function toggleForm() {
+	let  $form = document.getElementById("content-form");
+	let $table =document.getElementById("content-table");
+	let $btn= document.getElementById("ocultar-menu");
+	
+	$form.classList.toggle("d-none");
+	
+	$table.classList.toggle("col-md-9");
+	$table.classList.toggle("col-md-12");
+
 }

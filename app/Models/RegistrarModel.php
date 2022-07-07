@@ -31,15 +31,6 @@ class RegistrarModel extends Model
         return $response;
 
     }
-    public function getDataById($id){
-       
-
-        $record= $this->db->table("t_bitacora");
-        $record->where(['id_bitacora' => $id]);
-
-        return $record->get()->getResultArray();
-        
-    }
     public function getCountries(){
        
         $record= $this->db->table("t_pais");

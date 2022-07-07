@@ -49,11 +49,15 @@ $routes->get('/registro/paises', 'RecordController::Countries');
 $routes->get('/registro/getCustomers', 'RecordController::getCustomers');
 $routes->post('/registro/deleteDetalle', 'RecordController::deleteDetalle');
 $routes->post('/registro/send', 'RecordController::send');
-$routes->get('/registro/get/(:any)', 'RecordController::getRecordById/$1');
+
 $routes->post('/registro/add', 'RecordController::add');//asegurar rutas
 $routes->post('/registro/add-detalles', 'RecordController::addDetalle');
 
 $routes->get('/historial', 'HistoryController::history');
+$routes->get('/historial/getBitacoras', 'HistoryController::getBitacoras');
+$routes->get('/historial/getOne/(:any)', 'HistoryController::getOne/$1');
+$routes->get('/historial/getDetalle/(:any)', 'HistoryController::getDetalleById/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
