@@ -35,11 +35,19 @@ class RecordController extends BaseController
         echo json_encode(['data'=> $response]);
         
     }
-    public function getCustomers()
+    public function deleteBitacora()
     {
         
         $model =  new \App\Models\RegistrarModel();
-        $response = $model->getCustomers();
+        $response = $model->deleteBitacora($this->request->getPost("id_bitacora"));
+        echo json_encode(['data'=> $response]);
+        
+    }
+    public function getDataToForm()
+    {
+        
+        $model =  new \App\Models\RegistrarModel();
+        $response = $model->getDataToForm();
         echo json_encode(['data'=> $response]);
         
     }
@@ -70,24 +78,26 @@ class RecordController extends BaseController
     {
         $validation = service("validation");
         $validation->setRules([
-            'tegnologia' => ['label' => 'tegnologia', 'rules' => 'required'],
+            'dispositivo' => ['label' => 'dispositivo', 'rules' => 'required'],
             'id_bitacora' => ['label' => 'id_bitacora', 'rules' => 'required'],
             'comentario' => ['label' => 'comentario', 'rules' => 'required'],
             'razon' => ['label' => 'razon', 'rules' => 'required'],
-            'producto' => ['label' => 'producto', 'rules' => 'required'],
+            'desc' => ['label' => 'desc', 'rules' => 'required'],
         ]);
 
         if(!$validation->withRequest($this->request)->run()){
             echo json_encode(['errors'=>$validation->getErrors()]);
         }else{
             $data = [
-                'tegnologia' => $this->request->getPost("tegnologia"),
+                'tecnologia' => $this->request->getPost("tecnologia"),
                 'id_bitacora' => $this->request->getPost("id_bitacora"),
-                'producto' => $this->request->getPost("producto"),
+                'id_origen' => $this->request->getPost("origen"),
+                'categoria' => $this->request->getPost("categoria"),
+                'dispositivo' => $this->request->getPost("dispositivo"),
                 'id_cliente' => $this->request->getPost("cliente"),
                 'criticidad' =>  $this->request->getPost("criticidad"),
                 'comentario' => $this->request->getPost("comentario"),
-                'restablecio' => $this->request->getPost("restablecio"),
+                'desc' => $this->request->getPost("desc"),
                 'reportado' => $this->request->getPost("reportado"),
                 'razon' => $this->request->getPost("razon"),
             ];

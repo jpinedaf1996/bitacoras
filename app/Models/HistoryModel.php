@@ -33,6 +33,7 @@ class HistoryModel extends Model
         $record= $this->db->table("t_detalle_bit");
         $record->select('*');
         $record->join('t_clientes', 't_detalle_bit.id_cliente = t_clientes.id_cliente','inner');
+        $record->join('t_orig_monitoreo', 't_detalle_bit.id_origen = t_orig_monitoreo.id_origen','inner');
         $record->where(['estado'=> 1,'id_bitacora' => $id]);
         return $record->get()->getResultArray();
         

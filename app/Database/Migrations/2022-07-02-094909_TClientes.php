@@ -11,7 +11,7 @@ class TClientes extends Migration
         $this->forge->addField([
             'id_cliente' => [
                 'type'           => 'INT',
-                'constraint'     => 2,
+                'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],

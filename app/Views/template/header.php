@@ -1,6 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container-fluid">
+  <img width="15px" src="<?php echo base_url("/images/KB.png")?>"/>
     <a class="navbar-brand" href="#"><?php echo session("name")?></a>
     <button
       class="navbar-toggler"

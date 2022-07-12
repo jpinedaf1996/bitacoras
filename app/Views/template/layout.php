@@ -1,11 +1,17 @@
 <!doctype html>
 <html lang="es">
   <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link href="<?php echo base_url("/vendor/fontawesome/css/all.min.css")?>" rel="stylesheet">
+
+    <script>
+      const BASE_URL = 'https://informesoc.intelector.net/public/';
+    </script>
     
     <link href="<?php echo base_url("/vendor/css/datatable.css")?>" rel="stylesheet" >
     <link href="<?php echo base_url("/vendor/css/dataTables.bootstrap5.min.css")?>" rel="stylesheet">

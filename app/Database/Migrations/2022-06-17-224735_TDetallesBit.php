@@ -16,7 +16,7 @@ class TDetallesBit extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'producto' => [
+            'dispositivo' => [
                 'type'       => 'varchar',
                 'constraint' => '100',
             ],
@@ -24,7 +24,16 @@ class TDetallesBit extends Migration
                 'type'       => 'INT',
                 'constraint' => '5',
             ],
-            'tegnologia' => [
+            'tecnologia' => [
+                'type'       => 'varchar',
+                'constraint' => '100',
+            ],
+            'id_origen' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+            ],
+            'categoria' => [
                 'type'       => 'varchar',
                 'constraint' => '100',
             ],
@@ -37,15 +46,13 @@ class TDetallesBit extends Migration
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
+            'desc' => [
+                'type'       => 'TEXT',
+                'null' => false
+            ],
             'comentario' => [
                 'type'       => 'TEXT',
-                'constraint' => '100',
-                'null' => true
-            ],
-            'restablecio' => [
-                'type'       => 'ENUM',
-                'constraint' => ['SI', 'NO'], 
-                'default'    => 'NO',
+                'null' => false
             ],
             'reportado' => [
                 'type'       => 'ENUM',
@@ -54,13 +61,19 @@ class TDetallesBit extends Migration
             ],
             'razon' => [
                 'type'       => 'TEXT',
-                'constraint' => '100',
+                'constraint' => '300',
                 'null' => true
             ],
             'id_bitacora' => [
                 'type'       => 'INT',
-                'constraint' => '5',
-            ],            
+                'constraint' => 11,
+                'unsigned'       => true,
+            ], 
+            'seguimineto' => [
+                'type'       => 'ENUM',
+                'constraint' => ['1', '0'], //1= dar seguimiento // 0= No dar seguimiento
+                'default'    => '0',
+            ],           
             'estado' => [
                 'type'       => 'ENUM',
                 'constraint' => ['1', '0'], //1= activo // 0= borrado
@@ -69,6 +82,7 @@ class TDetallesBit extends Migration
             
         ]);
         $this->forge->addKey('id_detalle', true);
+        $this->forge->addForeignKey('id_bitacora' , 't_bitacora','id_bitacora','CASCADE','CASCADE');
         $this->forge->createTable('t_detalle_bit');
     }
 

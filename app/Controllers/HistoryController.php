@@ -26,7 +26,7 @@ class HistoryController extends BaseController
     public function getOne($id)
     {
         
-        header('Content-Type: application/json');
+        //header('Content-Type: application/json');
         $response = $this->model
         ->getOne($id);
         

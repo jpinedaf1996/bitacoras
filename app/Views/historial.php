@@ -7,7 +7,7 @@ Historial
 
 <?= $this->section('content') ?>
 <div class="main-container">
-<h2>Historial de bitacoras : <?php echo session("name")?></h2>
+<h2>Historial de bitacoras </h2>
 <br>
 <div class="row">
   <div class="col-md-12">

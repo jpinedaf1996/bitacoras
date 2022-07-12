@@ -7,17 +7,29 @@ Bitacora # : <?php echo $id_bitacora?>
 
 <?= $this->section('content') ?>
 <div class="main-container">
-<h2>Bitacora # : <?php echo $id_bitacora?></h2>
-<h2>usuario : <?php echo $name?></h2>
 <div class="row">
-
+  <div class="col-md-6">
+      <div class="input-group mb-3">
+      <img width="200px" src="<?php echo base_url("/images/logo.jpg")?>"/> 
+    </div> 
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Fecha : <?php echo $fecha?></span>
+        <span class="input-group-text" id="basic-addon1">Turno <?php echo $turno?></span>
+        <span class="input-group-text" id="basic-addon1">Pais : <?php echo $pais?></span> 
+        <span class="input-group-text" id="basic-addon1">Estado : <?php echo $estado?></span> 
+    </div> 
+  </div>
+  <div class="col-md-6">
+  <h2>Bitacora # : <?php echo $id_bitacora?> usuario : <?php echo $name?></h2>
+  <span>
+    <strong>Descripcion: </strong>
+    <span><?php echo $descripcion?></span>
+  </span>
+  </div>
 </div>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Fecha : <?php echo $fecha?></span>
-    <span class="input-group-text" id="basic-addon1">Turno <?php echo $turno?></span>
-    <span class="input-group-text" id="basic-addon1">Pais : <?php echo $pais?></span> 
-    <span class="input-group-text" id="basic-addon1">Estado : <?php echo $estado?></span> 
-</div> 
+
+
+
 
 <div class="row">
   
@@ -25,17 +37,19 @@ Bitacora # : <?php echo $id_bitacora?>
       <div class="w-100 table-responsive" >
     <table style="text-alight:center" class="table table-hover">
       <thead>
-        <tr>
-          <th scope="col">Hora</th>
-          <th scope="col">Producto</th>
-          <th scope="col">Tegnologia</th>
-          <th scope="col">Cliente</th>
-          <th scope="col">Criticidad</th>
-          <th scope="col">Comentario</th>
-          <th scope="col">Restablecio</th>
-          <th scope="col">Reportado</th>
-          <th scope="col">Razon</th>
-        </tr>
+      <tr>
+								<th scope="col">Hora</th>
+                <th scope="col">Origen</th>
+                <th scope="col">Tecnologia</th>
+								<th scope="col">Categoria</th>	
+                <th scope="col">Cliente</th>							
+                <th scope="col">Criticidad</th>
+								<th scope="col">Dispositivo</th>
+								<th scope="col">Descripcion</th>
+								<th scope="col">Comentario</th>
+								<th scope="col">Reportado</th>
+								<th scope="col">Razon</th>
+							</tr>
       </thead>
       <tbody id="detalle-table">
         
@@ -49,8 +63,24 @@ Bitacora # : <?php echo $id_bitacora?>
 </div>
 </div>
   <script>
-  const BASE_URL = 'https://informesoc.intelector.net/public/';
+  
 
+  function badge(params) {
+	let alerta;
+	switch (params) {
+		case 'BAJA':
+			alerta = `<span class="badge bg-info">${params}</span>`;
+			break;
+		case 'MEDIA':
+			alerta = `<span class="badge bg-warning">${params}</span>`;
+		break;	
+		case 'ALTA':
+			alerta = `<span class="badge bg-danger">${params}</span>`;
+		break;
+	}
+	
+	return alerta;
+}
   getDetalle();
   function getDetalle() {
 	
@@ -68,15 +98,17 @@ Bitacora # : <?php echo $id_bitacora?>
 			
 			response.forEach(data => {
 				const [date, time] = data.hora.split(' ');
-				let detalle = ` <tr> 
+				let detalle = ` <tr >                       
                           <td>${time}</td>
-                          <td>${data.producto}</td>
-                          <td>${data.tegnologia}</td>
+                          <td>${data.herramienta}</td> 
+                          <td>${data.tecnologia}</td>
+                          <td>${data.categoria}</td>                          
                           <td>${data.nombre}</td>  
-                          <td>${data.criticidad}</td>  
+                          <td>${badge(data.criticidad)}</td>  
+                          <td>${data.dispositivo}</td>
+                          <td>${data.desc}</td>  
                           <td>${data.comentario}</td>  
-                          <td>${data.restablecio}</td>  
-                          <td>${data.reportado}</td>  
+                          <td>${data.reportado}</td>    
                           <td>${data.razon}</td>  
                           
                       </tr>`;

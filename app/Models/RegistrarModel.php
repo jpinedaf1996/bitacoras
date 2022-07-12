@@ -42,6 +42,7 @@ class RegistrarModel extends Model
         $record= $this->db->table("t_detalle_bit");
         $record->select('*');
         $record->join('t_clientes', 't_detalle_bit.id_cliente = t_clientes.id_cliente','inner');
+        $record->join('t_orig_monitoreo', 't_detalle_bit.id_origen = t_orig_monitoreo.id_origen','inner');
         $record->where(['estado'=> 1,'id_bitacora' => $id]);
         return $record->get()->getResultArray();
         
@@ -76,10 +77,13 @@ class RegistrarModel extends Model
 
     }
 
-    public function getCustomers(){
+    public function getDataToForm(){
        
-        $record = $this->db->table("t_clientes");
-        return $record->get()->getResultArray();
+        $customers = $this->db->table("t_clientes")->get()->getResultArray();
+        $origin = $this->db->table("t_orig_monitoreo")->get()->getResultArray();
+        
+        return ["customers" => $customers, "origen"=>$origin] ;
+
 
     }
     public function deleteDetalle($id){
@@ -97,15 +101,36 @@ class RegistrarModel extends Model
     }
     public function send($id){
        
+        $counter = $this->db->table("t_detalle_bit");
+        $counter->where('id_bitacora', $id);
+        //$counter->countAllResults();
+
+        if($counter->countAllResults() > 0){
+            $builder = $this->db->table("t_bitacora");
+            $builder->set('estado', 'close');
+            $builder->where('id_bitacora', $id);
+            if($builder->update()){
+                return ['status'=>'ok'];
+            }else{
+                return ['status'=>'error:No se pudo actualizar'];
+            }
+        }else{
+            return ['status'=>'Error: No se puede guardar si la bitacora esta vacia!'];
+        }
+
+
+    
+    }
+    public function deleteBitacora($id){
+       
         $builder = $this->db->table("t_bitacora");
-        $builder->set('estado', 'close');
         $builder->where('id_bitacora', $id);
-        if($builder->update()){
+        
+        if($builder->delete()){
             return ['status'=>'ok'];
         }else{
-            return ['status'=>'error'];
+            return ['status'=>'error [500]: No se pudo borrar'];
         }
-        
 
     }
 

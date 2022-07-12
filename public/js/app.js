@@ -1,7 +1,7 @@
 
-const BASE_URL = 'https://informesoc.intelector.net/public/';
 let bitacora = {};
-getCustomers();
+getDataToForm();
+
 (() => {
 	const VALIDAR_URL = BASE_URL + "registro/validar";
 	fetch(VALIDAR_URL, {
@@ -34,7 +34,7 @@ getCustomers();
 		});
 })();
 
-function getCustomers() {
+function getDataToForm() {
 	const PAIS_URL = BASE_URL + "registro/getCustomers";
 	fetch(PAIS_URL, {
 			method: 'GET',
@@ -43,8 +43,12 @@ function getCustomers() {
 		.catch(error => console.error('Error:', error))
 		.then(response => {
 			const $select = document.getElementById("cliente");
+			const $SelectOrigen = document.getElementById("origen");
 			$select.innerHTML = "";
-			const paises = response.data;
+			$SelectOrigen.innerHTML = "";
+
+			const paises = response.data.customers;
+			const origen = response.data.origen;
 
 			for (let i = 0; i < paises.length; i++) {
 				
@@ -53,6 +57,15 @@ function getCustomers() {
 				option.value = element.id_cliente;
 				option.text = element.nombre;
 				$select.appendChild(option);
+
+			}
+			for (let i = 0; i < origen.length; i++) {
+				
+				const option = document.createElement('option');
+				const element = origen[i];
+				option.value = element.id_origen;
+				option.text = element.herramienta;
+				$SelectOrigen.appendChild(option);
 
 			}
 		});
@@ -84,7 +97,6 @@ function getDetalle() {
 	let data = new FormData();
 	data.append('id_bitacora', bitacora.data.id_bitacora);
 
-	//console.log(bitacora.data.id_bitacora);
 	const PAIS_URL = BASE_URL + "registro/getDetalle";
 	fetch(PAIS_URL, {
 		method: 'POST',
@@ -100,15 +112,17 @@ function getDetalle() {
 			response.data.forEach(data => {
 				const [date, time] = data.hora.split(' ');
 				let detalle = ` <tr > 
-                          <td><span style="cursor:pointer" class="text-danger" onclick="deleteDetalle(${data.id_detalle})">x</span></td>
+                          <td><span style="cursor:pointer" class="text-danger" onclick="deleteDetalle(${data.id_detalle})"><i class="fa-regular fa-circle-xmark"></i></span></td>
                           <td>${time}</td>
-                          <td>${data.producto}</td>
-                          <td>${data.tegnologia}</td>
-                          <td>${data.nombre}</td>  
-                          <td>${data.criticidad}</td>  
+						  <td>${data.herramienta}</td> 
+						  <td>${data.tecnologia}</td>
+						  <td>${data.categoria}</td>                          
+						  <td>${data.nombre}</td>  
+                          <td>${badge(data.criticidad)}</td>  
+						  <td>${data.dispositivo}</td>
+                          <td>${data.desc}</td>  
                           <td>${data.comentario}</td>  
-                          <td>${data.restablecio}</td>  
-                          <td>${data.reportado}</td>  
+                          <td>${data.reportado}</td>    
                           <td>${data.razon}</td>  
                           
                       </tr>`;
@@ -144,11 +158,34 @@ function deleteDetalle(params) {
 
 }
 function send() {
-	let result = confirm('Seguro desea finalizar la bitacora?');
+	let result = confirm('¿Guardar bitacora?');
 	const data = new FormData();
 	if(result == true && bitacora.data != undefined){	
 	data.append('id_bitacora', bitacora.data.id_bitacora);
 	const DETALLE_URL = BASE_URL + "registro/send";
+	fetch(DETALLE_URL, {
+			method: 'POST',
+			body: data,
+		})
+		.then(res => res.json())
+		.catch(error => {
+			console.error('Error:', error)		
+		})
+		.then(response => {
+			if(response.data.status == 'ok'){
+				window.location.reload();
+			}else{
+				alert(response.data.status);
+			}
+		});
+	}
+}
+function cancel() {
+	let result = confirm('¿Cancelar bitacora?');
+	const data = new FormData();
+	if(result == true && bitacora.data != undefined){	
+	data.append('id_bitacora', bitacora.data.id_bitacora);
+	const DETALLE_URL = BASE_URL + "registro/cancel";
 	fetch(DETALLE_URL, {
 			method: 'POST',
 			body: data,
@@ -199,7 +236,7 @@ document.getElementById("detalle-form").addEventListener("submit", function(even
 	const data = new FormData(document.getElementById('detalle-form'));
 	data.append('id_bitacora', bitacora.data.id_bitacora);
 	//btn.setAttribute("disabled", true);
-
+	//console.log(data); debugger
 
 	var DETALLE_URL = BASE_URL + "registro/add-detalles";
 
@@ -223,7 +260,22 @@ document.getElementById("detalle-form").addEventListener("submit", function(even
 		});
 
 });
-
+function badge(params) {
+	let alerta;
+	switch (params) {
+		case 'BAJA':
+			alerta = `<span class="badge bg-info">${params}</span>`;
+			break;
+		case 'MEDIA':
+			alerta = `<span class="badge bg-warning">${params}</span>`;
+		break;	
+		case 'ALTA':
+			alerta = `<span class="badge bg-danger">${params}</span>`;
+		break;
+	}
+	
+	return alerta;
+}
 document.getElementById("btn-limpiar").addEventListener("click", function(event) {
 	event.preventDefault();
 

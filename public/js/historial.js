@@ -1,4 +1,3 @@
-const BASE_URL = 'https://informesoc.intelector.net/public/';
 
 function getBitacoras() {
 	const PAIS_URL = BASE_URL + "historial/getBitacoras";
@@ -16,7 +15,7 @@ function getBitacoras() {
 				let bitacora = ` <tr > 
                           <td><span style="cursor:pointer" class="text-danger" >x</span></td>
                           <td>${data.id_bitacora}</td>
-                          <td> <button class="btn btn-secondary btn-sm" onclick="ver(${data.id_bitacora})" >Ver</button></td>
+                          <td> <button class="btn btn-success btn-sm" onclick="ver(${data.id_bitacora})" ><i class="fa-solid fa-eye"></i></button></td>
                           <td>${data.name}</td>
                           <td>${data.fecha}</td>
                           <td>Turno ${data.turno}</td>  

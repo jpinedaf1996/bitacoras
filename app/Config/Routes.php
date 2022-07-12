@@ -46,9 +46,10 @@ $routes->get('/registro', 'RecordController::registro');
 $routes->get('/registro/validar', 'RecordController::statusValidate');
 $routes->post('/registro/getDetalle', 'RecordController::getDetalle');
 $routes->get('/registro/paises', 'RecordController::Countries');
-$routes->get('/registro/getCustomers', 'RecordController::getCustomers');
+$routes->get('/registro/getCustomers', 'RecordController::getDataToForm');
 $routes->post('/registro/deleteDetalle', 'RecordController::deleteDetalle');
 $routes->post('/registro/send', 'RecordController::send');
+$routes->post('/registro/cancel', 'RecordController::deleteBitacora');
 
 $routes->post('/registro/add', 'RecordController::add');//asegurar rutas
 $routes->post('/registro/add-detalles', 'RecordController::addDetalle');
