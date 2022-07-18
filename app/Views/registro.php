@@ -4,7 +4,7 @@ Registro
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="main-container">
-	<h2>Registro de bitacora : <?php echo session("name")?></h2>
+	<h2>Registro de bitacora : <?php echo session("user")?></h2>
 	<br>
 	<div class="row">
 		<div class="col-md-3">
@@ -129,16 +129,16 @@ Registro
 			</div>
 			<div id="content-table" class="col-md-9 ">
 				<div class="table-responsive" >
-					<table style="text-alight:center; width: 125%" class="table table-hover">
+					<table style="text-alight:center; width: 100%" class="table table-hover">
 						<thead>
 							<tr>
 								<th scope="col">Borrar</th>
 								<th scope="col">Hora</th>
-                <th scope="col">Origen</th>
-                <th scope="col">Tecnologia</th>
+								<th scope="col">Origen</th>
+								<th scope="col">Tecnologia</th>
 								<th scope="col">Categoria</th>	
-                <th scope="col">Cliente</th>							
-                <th scope="col">Criticidad</th>
+								<th scope="col">Cliente</th>							
+								<th scope="col">Criticidad</th>
 								<th scope="col">Dispositivo</th>
 								<th scope="col">Descripcion</th>
 								<th scope="col">Comentario</th>

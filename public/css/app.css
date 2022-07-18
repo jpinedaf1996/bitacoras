@@ -1,0 +1,46 @@
+body .main-container{
+    margin:15px;
+    font-size: 14px; 
+  }
+  .tarjetas{
+    background-color: cadetblue; 
+  }
+  .card-content{
+    border: 1px black solid;
+    width: 100%;
+    height: 125px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card-content .row-content{
+    padding: 0;
+    margin: 0;
+    border: 1px black solid;
+    width: 100%;
+    height: 50%;
+    
+  }
+  .main-card .col-md-3 {
+    background-color: rgb(141, 175, 226);
+    border: 1px black solid;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-card .col-md-9 { 
+    border: 1px black solid;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-card{
+    background-color: gray;
+    height: 100%;
+    border: 1px black solid;
+  }
+  .g-0{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }

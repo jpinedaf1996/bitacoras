@@ -16,12 +16,7 @@
     <link href="<?php echo base_url("/vendor/css/datatable.css")?>" rel="stylesheet" >
     <link href="<?php echo base_url("/vendor/css/dataTables.bootstrap5.min.css")?>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-      body .main-container{
-        margin:15px;
-        font-size: 14px; 
-      }
-    </style>
+    <link rel="stylesheet" href="<?php echo base_url("/css/app.css")?>">
     <title><?=$this->renderSection('tittle') ?></title>
   </head>
   <body>

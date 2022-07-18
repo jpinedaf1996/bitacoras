@@ -20,7 +20,7 @@ Bitacora # : <?php echo $id_bitacora?>
     </div> 
   </div>
   <div class="col-md-6">
-  <h2>Bitacora # : <?php echo $id_bitacora?> usuario : <?php echo $name?></h2>
+  <h2>Bitacora # : <?php echo $id_bitacora?> usuario : <?php echo $user?></h2>
   <span>
     <strong>Descripcion: </strong>
     <span><?php echo $descripcion?></span>

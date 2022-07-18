@@ -15,15 +15,11 @@ class TUsers extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ],
             'user' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'password' => [
+            'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],

@@ -10,7 +10,7 @@ class HistoryModel extends Model
        
         $record = $this->db
         ->table("t_bitacora")
-        ->select('t_bitacora.*,t_users.name, t_pais.pais')
+        ->select('t_bitacora.*,t_users.user, t_pais.pais')
         ->join('t_users', 't_bitacora.user_id = t_users.user_id','inner')
         ->join('t_pais', 't_bitacora.id_pais = t_pais.id_pais','inner')
         ->orderBy('id_bitacora', 'DESC');
@@ -21,7 +21,7 @@ class HistoryModel extends Model
        
         $record = $this->db
         ->table("t_bitacora")
-        ->select('t_bitacora.*,t_users.name, t_pais.pais')
+        ->select('t_bitacora.*,t_users.user, t_pais.pais')
         ->join('t_users', 't_bitacora.user_id = t_users.user_id','inner')
         ->join('t_pais', 't_bitacora.id_pais = t_pais.id_pais','inner')
         ->where(['id_bitacora' => $id]);

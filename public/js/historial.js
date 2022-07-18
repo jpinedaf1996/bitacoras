@@ -10,13 +10,13 @@ function getBitacoras() {
 			
 			let content = document.getElementById("bitacora-table");
 			content.innerHTML = " ";
-
+			let cont =1;
 			response.data.forEach(data => {
 				let bitacora = ` <tr > 
-                          <td><span style="cursor:pointer" class="text-danger" >x</span></td>
-                          <td>${data.id_bitacora}</td>
+						  <td>${cont++ }</td>
+                          <td>${data.id_bitacora}</td> 
                           <td> <button class="btn btn-success btn-sm" onclick="ver(${data.id_bitacora})" ><i class="fa-solid fa-eye"></i></button></td>
-                          <td>${data.name}</td>
+                          <td>${data.user}</td>
                           <td>${data.fecha}</td>
                           <td>Turno ${data.turno}</td>  
                           <td>${data.pais}</td>  

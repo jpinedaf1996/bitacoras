@@ -14,8 +14,8 @@ Historial
   <table id="example"  class="table table-striped table-hover">
   <thead style="text-align:center">
     <tr>
-      <th scope="col">Borrar</th>
-      <th scope="col"># ID</th>
+      <th scope="col-sm w-5">#correlativo</th>
+      <th scope="col">#ID</th>
       <th scope="col">ver</th>
       <th scope="col">Usuario</th>
       <th scope="col">Fecha</th>

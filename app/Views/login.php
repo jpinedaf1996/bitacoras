@@ -22,7 +22,7 @@
         <form action="<?php echo base_url("/login")?>" method="POST">
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input placeholder="Usuario" type="email" id="user" name="user"  class="form-control form-control-lg" />
+            <input placeholder="Usuario" type="text" id="user" name="user"  class="form-control form-control-lg" />
             <label class="form-label" for="user">Usuario</label>
           </div>
 
